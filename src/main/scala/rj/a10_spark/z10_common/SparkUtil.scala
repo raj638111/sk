@@ -12,7 +12,7 @@ object SparkUtil {
     val ss = SparkSession
       .builder()
       .appName(appName)
-      .master("local[1]")
+      .master("local[*]")
       .config("spark.dynamicAllocation.enabled", true)
       .config("spark.shuffle.service.enabled", true)
       .config("spark.qubole.autoscaling.stagetime", "5000")

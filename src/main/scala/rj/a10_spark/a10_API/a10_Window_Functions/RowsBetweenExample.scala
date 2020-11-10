@@ -35,6 +35,7 @@ object RowsBetweenExample {
       Info("a2", "a2b1", 200)
     )
     val df = spark.sparkContext.parallelize(input).toDF
+    df.show(100, false)
     log.info(df.schema.treeString)
     // Syntax
     //  <function> over WindowSpec
@@ -53,6 +54,16 @@ case class Info(
   revenue: Int)
 
 /* Result
++------+----+-------+
+|author|book|revenue|
++------+----+-------+
+|a1    |a1b1|100    |
+|a1    |a1b2|110    |
+|a1    |a1b3|120    |
+|a1    |a1b4|130    |
+|a2    |a2b1|200    |
++------+----+-------+
+
 +------+----+-------+---+
 |author|book|revenue|sum|
 +------+----+-------+---+
